@@ -172,3 +172,80 @@ h1{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(186, 223, 55, 0.989) 100%);
 }
+.box{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: black;
+}
+.box:hover{
+    background-color: rgba(124, 10, 10, 0.658);
+    transition: all 0.5s;
+}
+.banking-p{
+    color: rgba(241, 9, 9, 0.658);
+    padding:20px;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+.welcome{
+    padding-left: 50px;
+    color: white;
+}
+.welcome-user{
+    font-size: 50px;
+}
+.experience{
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    padding-top: 2px;
+    font-size: 20px;
+}
+.your-acc{
+    font-size: 18px;
+    color: grey;
+    margin-bottom: 10px;
+}
+.banc-card-style{
+    height: 200px;
+    width: 400px;
+    background-color: rgba(124, 10, 10, 0.658);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    color: whitesmoke;
+}
+.banc-card-style1{
+    height: 200px;
+    width: 400px;
+    background-color: rgba(121, 114, 114, 0.658);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    color: whitesmoke;
+}
+.banc-card-head{
+    display: flex;
+    padding-left: 20px;
+    padding-top: 10px;
+    gap: 20px;
+    justify-content: start;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.bb{
+    font-size: 30px;
+}
+.card-number{
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    padding-bottom: 20px;
+}
