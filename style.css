@@ -249,3 +249,168 @@ h1{
     gap:5px;
     padding-bottom: 20px;
 }
+.debit{
+    display: flex;
+    justify-content: end;
+    padding-right: 20px;
+}
+.num{
+    display: flex;
+    justify-content: start;
+    font-size: 30px;
+}
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}
+.user-card-name{
+    padding-left: 20px;
+    justify-content: start;
+}
+.visa-logo{
+    padding-right: 20px;
+    font-size: 24px;
+    justify-content: end;
+}
+.card-income-expenses{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.arrow-div{
+    background-color: rgba(40, 236, 14, 0.658);
+    border-radius: 9999px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-tracks: center;
+}
+.arrow-div img{
+    height: 40px;
+    width: 40px;
+}
+.arrow-div2{
+    background-color: rgba(252, 5, 5, 0.829);
+    border-radius: 9999px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-tracks: center;
+}
+.income{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap:10px;
+}
+.single-line{
+    background-color: grey;
+    height: 7px;
+    width: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.hotch{
+    background-color: rgba(124, 10, 10, 0.658);
+    height: 100%;
+    width: 70%;
+
+}
+.percent{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+.expensese{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap:10px;
+    
+}
+.expenses-sum .income-sum{
+    color:white;
+}
+.hotch2{
+    background-color: rgba(124, 10, 10, 0.658);
+    height: 100%;
+    width: 30%;
+
+}
+.staticstics{
+    display: flex;
+    gap: 8px;
+}
+.statistic-line{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    gap:5px;
+}
+.stat-num{
+    font-size: 10px;
+}
+.line{
+    background-color:  rgba(124, 10, 10, 0.658);
+    width: 7px;
+}
+.proba{
+    display: flex;
+    gap:20px;
+}
+.line1 { height: 100px; }
+.line2 { height: 120px; }
+.line3 { height: 140px; }
+.line4 { height: 50px; }
+.line5 { height: 50px; }
+.line6 { height: 60px; }
+.line7 { height: 70px; }
+.line8 { height: 120px; }
+.line9 { height: 30px; }
+.line10 { height: 160px; }
+.line11 { height: 150px; }
+.line12 { height: 155px; }
+.line13 { height: 105px; }
+.line14 { height: 90px; }
+.line15 { height: 64px; }
+.line16 { height: 70px; }
+.line17 { height: 80px; }
+.line18 { height: 90px; }
+.line19 { height: 150px; }
+.line20 { height: 64px; }
+.line21 { height: 20px; }
+.line22 { height: 114px; }
+.line23{ height: 64px; }
+.line24{ height: 40px; }
+.line25{ height: 111px; }
+.line26{ height: 64px; }
+.line27{ height: 79px; }
+.line28 { height: 93px; }
+.line29{ height: 120px; }
+.line30{ height: 100px; }
+.line31{ height: 40px; }
+.line32{ height: 30px; }
+.line33{ height: 70px; }
+.line34{ height: 80px; }
+.line35{ height: 100px; }
+.line36{ height: 120px; }
+.line37{ height: 150px; }
+.line38{ height: 100px; }
+.line39{ height: 69px; }
+.line40{ height: 80px; }
+.line41{ height: 100px; }
+.line42{ height: 120px; }
+.line43{ height: 125px; }
+.line44{ height: 135px; }
+.line45{ height: 150px; }
