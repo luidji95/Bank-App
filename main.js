@@ -154,3 +154,76 @@ Accounts.forEach(acc => {
     accountManager.addToArray(newAccount);
     console.log(accountManager.accountArray);
 });
+
+/* Klikom na dugme Get Started otvara se overlay za logovanje */
+const getStarted = document.querySelectorAll('.get-started-button');
+getStarted.forEach(btn => {
+    btn.addEventListener('click', function() {
+        overlay.style.display = 'flex';
+    });
+});
+
+/* Pristup elementima sa overlaya za logovanje */
+const overlay = document.getElementById('overlay');
+const login = document.querySelector('.log-in-button');
+const userNameInput = document.getElementById('usname');
+const paswordInput = document.getElementById('psw');
+
+/* Pristup elementima sa banking overlaya */
+const bankingOverlay = document.querySelector('.overlay-banking');
+const welcomeUser = document.querySelector('.welcome-user');
+const visaDebitCard = document.querySelector('.visa-debit');
+const visaCreditCard = document.querySelector('.visa-credit');
+const income = document.querySelector('.income-sum');
+const expenses = document.querySelector('.expenses-sum');
+const hiddenCardNum = document.querySelector('.hiden-card-number');
+const balance = document.querySelector('.balance-amonuth');
+
+/* Funkcija koja proverava validnost unetih podataka sa login overlaya
+i otvara banking overlay ako su podaci tačni */
+function logInValidation() {
+    const validAccount = accountManager.findAccountByUserNameAndPin(userNameInput.value, parseInt(paswordInput.value));
+
+    if (validAccount) {
+        bankingOverlay.style.display = 'flex';
+        welcomeUser.textContent = `Welcome ${validAccount.owner}`;
+        visaCreditCard.textContent = validAccount.visaCreditCard;
+        visaDebitCard.textContent = validAccount.visaDebitCard;
+        
+        // Pronalazak svih elemenata sa klasom 'user-card-name' i postavljanje teksta u svaki od njih
+        const userCardNames = document.querySelectorAll('.user-card-name');
+        userCardNames.forEach(userCardName => {
+            userCardName.textContent = validAccount.owner;
+        });
+
+        income.textContent = `INCOME: $${validAccount.incomeTransaction()}`;
+        expenses.textContent = `EXPENSES: $${validAccount.expenseTransaction()}`;
+
+        balance.textContent = `$${validAccount.getCurrentBalance()}`;
+
+        const lastNum = validAccount.visaDebitCard.split(" ");
+        hiddenCardNum.textContent = `**** **** **** ${lastNum.pop()}`;
+
+        validAccount.renderAllTransactions();
+        accountManager.activeAccount = validAccount;
+    } else {
+        alert('Wrong username or pasword! User not found!');
+    }
+    
+   
+}
+
+login.addEventListener('click', logInValidation);
+
+/* Pristupamo overlayu za uplatu i transfer novca sa računa */
+const transferOverlay = document.getElementById('transfer-overlay');
+const transferFromUserInput = document.getElementById('transfer-user');
+const amountForTransfer = document.getElementById('transfer-amount');
+const submitTransfer = document.getElementById('submit-transfer-to');
+
+/* Otvara se overlay klikom na dugme transfer */
+const transferMoney = document.querySelector('.btn-payment-transfer');
+transferMoney.addEventListener('click', function() {
+    bankingOverlay.style.display = 'none';
+    transferOverlay.style.display = 'flex';
+});
