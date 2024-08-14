@@ -227,3 +227,73 @@ transferMoney.addEventListener('click', function() {
     bankingOverlay.style.display = 'none';
     transferOverlay.style.display = 'flex';
 });
+
+const doTransfer = () => {
+    const transferAmount = parseInt(amountForTransfer.value);
+    const senderAccount = accountManager.activeAccount;
+    const recipientAccount = accountManager.findAccountByInitials(transferFromUserInput.value);
+
+    if (!recipientAccount) {
+        alert('User not found!');
+        return;
+    }
+
+    // Provera da li ima dovoljno sredstava za transfer
+    if (senderAccount.getCurrentBalance() < transferAmount) {
+        alert('The transaction has been declined! Insufficient funds in the account!');
+        return;
+    }
+
+    // Smanjenje stanja na računu pošiljaoca i povećanje stanja na računu primaoca
+    senderAccount.addTransaction('Transfer to ' + recipientAccount.userName, -transferAmount, new Date().toISOString().split('T')[0]);
+    recipientAccount.addTransaction('Transfer from ' + senderAccount.userName, transferAmount, new Date().toISOString().split('T')[0]);
+
+    // Ažuriranje prikaza transakcija
+    senderAccount.renderAllTransactions();
+   
+
+    // Zatvaranje overlay-a za transfer i prikaz bankarskog overlay-a
+    transferOverlay.style.display = 'none';
+    bankingOverlay.style.display = 'flex';
+
+    income.textContent = `INCOME: $${senderAccount.incomeTransaction()}`;
+    expenses.textContent = `EXPENSES: $${senderAccount.expenseTransaction()}`;
+    balance.textContent = `$${senderAccount.getCurrentBalance()}`;
+
+    console.log(accountManager.accountArray);
+};
+
+submitTransfer.addEventListener('click', doTransfer);
+
+
+
+
+// Selektovanje elemenata
+const requestedMoney = document.getElementById('deposit-amount-input');
+const submitRequest = document.getElementById('submit-deposit');
+
+// Funkcija za obradu zahteva za uplatu
+function requestMoney() {
+    const money = parseInt(requestedMoney.value);
+    const sendMoney = accountManager.activeAccount;
+
+    if (isNaN(money) || money <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+    }
+
+    // Dodaj novu transakciju
+    sendMoney.addTransaction("Requested Money", money, new Date().toISOString().split('T')[0]);
+
+    // Ažuriraj prikaz balansa i prihoda
+    balance.textContent = `$${sendMoney.getCurrentBalance()}`;
+    income.textContent = `INCOME: $${sendMoney.incomeTransaction()}`;
+
+    // Ažuriraj prikaz svih transakcija
+    sendMoney.renderAllTransactions();
+
+    // Resetovanje input polja i zatvaranje overlay-a
+    requestedMoney.value = '';
+    transferOverlay.style.display = 'none';
+    bankingOverlay.style.display = 'flex';
+}
