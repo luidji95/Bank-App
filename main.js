@@ -297,3 +297,67 @@ function requestMoney() {
     transferOverlay.style.display = 'none';
     bankingOverlay.style.display = 'flex';
 }
+
+// Dodavanje event listener-a na dugme za slanje zahteva
+submitRequest.addEventListener('click', requestMoney);
+
+const userInitialforClose = document.getElementById('confirm-user');
+const pinForClose = document.getElementById('confirm-pin');
+const closeAccountBtn = document.getElementById('closing');
+
+function closeAccount(){
+    console.log('closing');
+    const username = userInitialforClose.value;
+    const pin = parseInt(pinForClose.value);
+
+    const accountIndex = accountManager.accountArray.findIndex(acc => acc.userName === username && acc.pin === pin);
+
+    if (accountIndex !== -1) {
+        // Brisanje računa iz niza
+        accountManager.accountArray.splice(accountIndex, 1);
+        accountManager.activeAccount = null;
+
+
+        transferOverlay.style.display = 'none';
+        overlay.style.display = 'flex'; // Prikaz overlay-a za logovanje
+
+        alert('Account successfully deleted.');
+    } else {
+        alert('Incorrect initials or PIN. Account not found.');
+    }
+
+
+}
+closeAccountBtn.addEventListener('click',closeAccount);
+
+
+// Selektovanje dugmeta za sortiranje
+const sortPaymentsBtn = document.querySelector('.btn-payment');
+
+// Funkcija za sortiranje transakcija po veličini
+function sortTransactions() {
+    const currentAccount = accountManager.activeAccount;
+
+    if (currentAccount) {
+        // Sortiraj transakcije po amount od najviše ka najmanje
+        currentAccount.transactions.sort((a, b) => a.amount - b.amount);
+        
+        // Ponovo renderuj sve transakcije
+        currentAccount.renderAllTransactions();
+
+        // Ažuriraj prikaz balansa i prihoda/rashoda
+        income.textContent = `INCOME: $${currentAccount.incomeTransaction()}`;
+        expenses.textContent = `EXPENSES: $${currentAccount.expenseTransaction()}`;
+        balance.textContent = `$${currentAccount.getCurrentBalance()}`;
+    } else {
+        alert('No active account found!');
+    }
+}
+
+
+// Dodavanje event listener-a na dugme za sortiranje
+sortPaymentsBtn.addEventListener('click', sortTransactions);
+
+
+
+
